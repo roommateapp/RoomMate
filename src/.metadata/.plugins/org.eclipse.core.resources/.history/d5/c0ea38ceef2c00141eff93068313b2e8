@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">RoomMate</string>
+    <string name="action_settings">Settings</string>
+    <string name="imgdesc">imgdesc</string>
+	<string name="sign_in_to_roommate">Sign In to Roommate</string>
+	
+	<string name="create_new_home_button">Create new Home</string>
+	<string name="no_existing_home_text">If you received a home code from your
+	     friend please enter it here:</string>
+	<string name="home_code">home code</string>
+	<string name="confirm_button">Confirm</string>
+	<string name="no_existing_home_label">Please choose</string>
+	<string name="sign_out_button">Sign out and enter with different account</string>
+	
+	
+    <string-array name="titles">
+        <item>Home board</item>
+        <item>Grocery lists</item>
+        <item>Cleaning tasks</item>
+        <item>Bills</item>
+        <item>Balance</item>
+        <item>How is home now?</item>
+        <item>Home settings</item>
+        <item>Sign Out</item>
+    </string-array>
+
+    <array name="icons">
+        <item>@android:drawable/ic_menu_my_calendar</item>
+        <item>@android:drawable/ic_menu_edit</item>
+        <item>@android:drawable/ic_menu_delete</item>
+        <item>@android:drawable/ic_menu_info_details</item>
+        <item>@android:drawable/ic_menu_sort_by_size</item>
+        <item>@android:drawable/ic_menu_myplaces</item>
+        <item>@android:drawable/ic_menu_manage</item>
+        
+        
+    </array>
+
+</resources>

@@ -1,0 +1,6 @@
+INDEX VERSION 1.126+C:\Users\YAEL\Desktop\uni\postpc\project\src\.metadata\.plugins\org.eclipse.jdt.core
+848856923.index
+1284074322.index
+3990291652.index
+2584403778.index
+4096844771.index

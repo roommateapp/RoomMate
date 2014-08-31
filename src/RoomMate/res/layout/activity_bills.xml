@@ -1,0 +1,118 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/hhh"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <EditText
+        android:id="@+id/new_bill"
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="14dp"
+        android:hint="add new bill"
+        android:inputType="textMultiLine" >
+    </EditText>
+
+    <Button
+        android:id="@+id/add_bill"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/new_bill"
+        android:drawableStart="@android:drawable/ic_menu_add" />
+
+    <LinearLayout
+        android:id="@+id/titles"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/new_bill"
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/bill_name_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="6dp"
+            android:layout_weight="0.01"
+            android:maxLines="1"
+            android:padding="4dp"
+            android:text="Bill name"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/bill_ammount_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="6dp"
+            android:layout_marginLeft="10dp"
+            android:padding="4dp"
+            android:text="Ammount"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/bill_due_date_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="6dp"
+            android:padding="4dp"
+            android:text="Due date"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <View
+        android:id="@+id/view2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@id/titles"
+        android:layout_marginBottom="1dp"
+        android:background="#DADADC" >
+    </View>
+
+    <ListView
+        android:id="@android:id/list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/titles" >
+    </ListView>
+
+     <RelativeLayout
+        android:id="@+id/last_modified"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="4dp" >
+
+        <TextView
+            android:id="@+id/last_modified_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Last modified by " />
+
+        <TextView
+            android:id="@+id/last_modified_by"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/last_modified_txt"
+            android:text="Natasha" />
+
+        <TextView
+            android:id="@+id/last_modified_on_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/last_modified_by"
+            android:text=" on " />
+
+        <TextView
+            android:id="@+id/last_modified_on"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/last_modified_on_txt"
+            android:text="15/08/2014" />
+    </RelativeLayout>
+    
+    
+</RelativeLayout>

@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <Button
+        android:id="@+id/invite_roommates"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:padding="10dp"
+        android:text="Invite roommates" />
+
+    <View
+        android:id="@+id/view1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/invite_roommates"
+        android:layout_margin="1dp"
+        android:background="#DADADC" >
+    </View>
+
+    <RelativeLayout
+        android:id="@+id/cleaning"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/view1"
+        android:layout_margin="2dp"
+        android:background="#A3C1AD" >
+
+        <TextView
+            android:id="@+id/cleaning_interval_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="4dp"
+            android:text="Cleaning interval:" />
+
+        <EditText
+            android:id="@+id/cleaning_interval"
+            android:layout_width="45dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="40dp"
+            android:ems="10"
+            android:inputType="numberSigned"
+            android:text="7" >
+
+            <requestFocus />
+        </EditText>
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/view2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/cleaning"
+        android:layout_margin="1dp"
+        android:background="#DADADC" >
+    </View>
+
+    <RelativeLayout
+        android:id="@+id/balance"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/view2"
+        android:layout_margin="2dp"
+        android:background="#ACE1AF" >
+
+        <TextView
+            android:id="@+id/balance_interval_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="4dp"
+            android:text="Balance calculation interval:" />
+
+        <EditText
+            android:id="@+id/balnce_interval"
+            android:layout_width="45dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="40dp"
+            android:ems="10"
+            android:inputType="numberSigned"
+            android:text="31" >
+        </EditText>
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/view3"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/balance"
+        android:layout_margin="1dp"
+        android:background="#A3C1AD" >
+    </View>
+
+    <RelativeLayout
+        android:id="@+id/bills"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/view3"
+        android:layout_margin="2dp"
+        android:background="#A3C1AD" >
+
+        <TextView
+            android:id="@+id/bills_annonce_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="4dp"
+            android:text="Days before bills-notification:" />
+
+        <EditText
+            android:id="@+id/bills_notification"
+            android:layout_width="45dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="40dp"
+            android:ems="10"
+            android:inputType="numberSigned"
+            android:text="3" />
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/view4"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/bills"
+        android:layout_margin="1dp"
+        android:background="#A3C1AD" >
+    </View>
+
+    <RelativeLayout
+        android:id="@+id/location"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/view4"
+        android:layout_margin="2dp"
+        android:background="#ACE1AF" >
+
+        <TextView
+            android:id="@+id/home_location_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_margin="4dp"
+            android:text="Set home location" />
+
+        <Button
+            android:id="@+id/set_location"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="30dp"
+            android:drawableTop="@android:drawable/ic_menu_mapmode" />
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/view5"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/location"
+        android:layout_margin="1dp"
+        android:background="#ACE1AF" >
+    </View>
+
+    <RelativeLayout
+        android:id="@+id/image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/view5"
+        android:layout_margin="2dp"
+        android:background="#A3C1AD" >
+
+        <TextView
+            android:id="@+id/image_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_margin="4dp"
+            android:text="Set home image" />
+
+        <Button
+            android:id="@+id/set_image"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="30dp"
+            android:drawableTop="@android:drawable/ic_menu_gallery" />
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/view6"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/image"
+        android:layout_margin="1dp"
+        android:background="#DADADC" >
+    </View>
+
+    <RelativeLayout
+        android:id="@+id/last_modified"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="4dp" >
+
+        <TextView
+            android:id="@+id/last_modified_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Last modified by " />
+
+        <TextView
+            android:id="@+id/last_modified_by"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/last_modified_txt"
+            android:text="Natasha" />
+
+        <TextView
+            android:id="@+id/last_modified_on_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/last_modified_by"
+            android:text=" on " />
+
+        <TextView
+            android:id="@+id/last_modified_on"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/last_modified_on_txt"
+            android:text="15/08/2014" />
+    </RelativeLayout>
+
+</RelativeLayout>

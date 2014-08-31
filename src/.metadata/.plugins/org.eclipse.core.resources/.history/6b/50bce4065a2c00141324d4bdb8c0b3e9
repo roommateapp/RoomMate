@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+	<Button
+        android:id="@+id/create_new_home_button"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:text="@string/create_new_home_button" />
+
+    <TextView
+        android:id="@+id/done_by"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/existing_tasks"
+        android:layout_alignBottom="@+id/existing_tasks"
+        android:layout_alignLeft="@+id/button1"
+        android:background="#00000000"
+        android:text="Done by"
+        android:textStyle="bold" />
+    
+    <EditText
+        android:id="@+id/editText1"
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="14dp"
+        android:hint="add new task"
+        android:inputType="textMultiLine" >
+    </EditText>
+</LinearLayout>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <EditText
+        android:id="@+id/new_list"
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="14dp"
+        android:hint="add new list"
+        android:inputType="textMultiLine" >
+    </EditText>
+
+    <Button
+        android:id="@+id/add_list"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/new_list"
+        android:drawableStart="@android:drawable/ic_menu_add" />
+
+    <ListView
+        android:id="@android:id/list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/add_list"
+        android:layout_margin="4dp" >
+    </ListView>
+
+    <RelativeLayout
+        android:id="@+id/last_modified"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="4dp" >
+
+        <TextView
+            android:id="@+id/last_modified_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Last modified by " />
+
+        <TextView
+            android:id="@+id/last_modified_by"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/last_modified_txt"
+            android:text="Natasha" />
+
+        <TextView
+            android:id="@+id/last_modified_on_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/last_modified_by"
+            android:text=" on " />
+
+        <TextView
+            android:id="@+id/last_modified_on"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/last_modified_on_txt"
+            android:text="15/08/2014" />
+    </RelativeLayout>
+
+</RelativeLayout>

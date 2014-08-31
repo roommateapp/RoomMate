@@ -1,0 +1,22 @@
+*********************************************************************************
+*****					RoomMate app - Parse DB Classes						*****
+*********************************************************************************
+
+-------------------------------------------------------------------------
+-----							Person								-----
+-------------------------------------------------------------------------
+
+* objectId
+* personGoogleId		key - the google account id
+* house					id of this person's house
+						(0 if this person has no house)
+
+
+-------------------------------------------------------------------------
+-----							House								-----
+-------------------------------------------------------------------------
+
+* objectId				key - house id (the same as in the houses 
+							list in Person class)
+* pendingEntryCodes		list of unique codes sent to users (not yet used)
+* personsIds			list of googleIds of persons who belong to this house

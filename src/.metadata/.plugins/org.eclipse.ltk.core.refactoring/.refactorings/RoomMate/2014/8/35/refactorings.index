@@ -1,0 +1,6 @@
+1408969736936	Rename field 'id'
+1408971598436	Rename type 'CreateHouseActivity'
+1409241016606	Rename field 'NO_EXISTING_HOME_ACTIVITY_CODE'
+1409246610307	Rename field 'parsePersonId'
+1409246982422	Rename local variable 'newPerson'
+1409247212059	Rename field 'NO_EXISTING_HOME_RESULT_CODE'
