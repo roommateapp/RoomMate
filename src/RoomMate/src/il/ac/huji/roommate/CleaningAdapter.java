@@ -44,7 +44,7 @@ public class CleaningAdapter extends ArrayAdapter<CleaningModel> {
 		taskView.setText(modelsArrayList.get(position).getTask());
 		personView.setText(modelsArrayList.get(position).getPerson());
 		
-		Typeface font = Typeface.createFromAsset(getContext().getAssets(), "Montserrat-Regular.ttf");
+		Typeface font = Typeface.createFromAsset(getContext().getAssets(), "SinkinSans-400Regular.otf");
 		taskView.setTypeface(font);
 		personView.setTypeface(font);
 

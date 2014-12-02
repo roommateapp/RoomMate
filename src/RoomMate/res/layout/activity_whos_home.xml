@@ -13,19 +13,31 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="4dp"
-            android:text="Rommates that are currently home:"
-            android:textStyle="bold" />
+            android:layout_centerHorizontal="true"
+            android:gravity="center_horizontal"
+            android:text="Rommates that are home \n right now:"
+            android:textColor="#006837"
+            android:textSize="18sp" />
+
+        <View
+            android:id="@+id/view1"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/whos_home_txt"
+            android:layout_margin="1dp"
+            android:background="#006837" >
+        </View>
 
         <ListView
             android:id="@android:id/list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/whos_home_txt"
+            android:layout_below="@id/view1"
             android:layout_margin="4dp" >
         </ListView>
 
         <View
-            android:id="@id/view1"
+            android:id="@id/view2"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_below="@android:id/list"
@@ -34,13 +46,7 @@
         </View>
     </RelativeLayout>
 
-    <Button
-        android:id="@+id/whos_home_change_location"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:text="Change home location" />
+   
 
     <RelativeLayout
         android:id="@+id/relativeLayout2"
@@ -53,7 +59,8 @@
             android:layout_width="240dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
-            android:hint="Message to roomamates at home" />
+            android:hint="Message to roomamates at home"
+            android:textColor="#006837" />
 
         <Button
             android:id="@+id/whos_home_send_msg"
@@ -61,7 +68,8 @@
             android:layout_height="wrap_content"
             android:layout_above="@id/view2"
             android:layout_toRightOf="@id/whos_home_msg"
-            android:text="Send" />
+            android:text="Send"
+            android:textColor="#006837" />
 
         <View
             android:id="@id/view2"
@@ -72,5 +80,14 @@
             android:background="#00000000" >
         </View>
     </RelativeLayout>
+    
+     <Button
+        android:id="@+id/whos_home_change_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/relativeLayout2"
+        android:layout_centerHorizontal="true"
+        android:text="Change home location"
+        android:textColor="#006837" />
 
 </RelativeLayout>

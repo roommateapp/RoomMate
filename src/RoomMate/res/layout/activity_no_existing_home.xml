@@ -1,42 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
-    
-	<Button
+    android:layout_gravity="center"
+    android:background="#ffffff" >
+
+    <TextView
+        android:id="@+id/no_existing_home_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginTop="40dp"
+        android:gravity="center_horizontal"
+        android:text="@string/no_existing_home_message"
+        android:textColor="#006837"
+        android:textSize="18sp" />
+
+    <Button
         android:id="@+id/create_new_home_button"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:text="@string/create_new_home_button" />
+        android:layout_below="@+id/no_existing_home_message"
+        android:layout_centerHorizontal="true"
+        android:text="@string/create_new_home_button"
+        android:textColor="#006837" />
 
     <TextView
         android:id="@+id/no_existing_home_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#00000000"
-        android:text="@string/no_existing_home_text" />
-    
+        android:layout_below="@+id/create_new_home_button"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:gravity="center_horizontal"
+        android:text="@string/no_existing_home_text"
+        android:textColor="#006837"
+        android:textSize="18sp" />
+
     <EditText
         android:id="@+id/no_existing_home_home_code"
         android:layout_width="190dp"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/no_existing_home_text"
+        android:layout_centerHorizontal="true"
         android:layout_marginLeft="4dp"
         android:layout_marginTop="14dp"
         android:hint="@string/home_code"
-        android:inputType="text" >
+        android:inputType="text"
+        android:textColor="#006837" >
     </EditText>
-    
-	<Button
+
+    <Button
         android:id="@+id/no_existing_home_confirm_button"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:text="@string/confirm_button" />
-	
-	<Button
-       android:id="@+id/no_existing_home_sign_out_button"
-       android:layout_width="200dp"
-       android:layout_height="wrap_content"
-       android:text="@string/sign_out_button" />
+        android:layout_below="@+id/no_existing_home_home_code"
+        android:layout_centerHorizontal="true"
+        android:text="@string/confirm_button"
+        android:textColor="#006837" />
 
-</LinearLayout>
+    <Button
+        android:id="@+id/no_existing_home_sign_out_button"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp"
+        android:text="@string/sign_out_button"
+        android:textColor="#006837" />
+
+</RelativeLayout>

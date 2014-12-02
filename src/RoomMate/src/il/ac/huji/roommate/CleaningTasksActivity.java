@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -27,23 +26,24 @@ public class CleaningTasksActivity extends ListFragment {
 		TextView existingTitleTxt = (TextView)rootView.findViewById(R.id.existing_tasks);
 		TextView donebyTitleTxt = (TextView)rootView.findViewById(R.id.done_by);
 
+		/*
 		TextView lastModifyTxt = (TextView)rootView.findViewById(R.id.last_modified_txt);
 		TextView lastModifyBy = (TextView)rootView.findViewById(R.id.last_modified_by);
 		TextView lastModifyOnTxt = (TextView)rootView.findViewById(R.id.last_modified_on_txt);
 		TextView lastModifyOn = (TextView)rootView.findViewById(R.id.last_modified_on);
-
-		Typeface font = Typeface.createFromAsset(getActivity().getAssets(), "Montserrat-Regular.ttf");
-		Typeface fontBold = Typeface.createFromAsset(getActivity().getAssets(), "Montserrat-Bold.ttf");
+*/
+		Typeface font = Typeface.createFromAsset(getActivity().getAssets(), "SinkinSans-400Regular.otf");
+		Typeface fontBold = Typeface.createFromAsset(getActivity().getAssets(), "SinkinSans-600SemiBold.otf");
 
 		newTaskEdit.setTypeface(font);
 		existingTitleTxt.setTypeface(fontBold);
 		donebyTitleTxt.setTypeface(fontBold);
-
+/*
 		lastModifyBy.setTypeface(font);
 		lastModifyOn.setTypeface(font);
 		lastModifyOnTxt.setTypeface(font);
 		lastModifyTxt.setTypeface(font);
-
+*/
 		return rootView;
 	}
 
@@ -51,8 +51,6 @@ public class CleaningTasksActivity extends ListFragment {
 		ArrayList<CleaningModel> models = new ArrayList<CleaningModel>();
 		models.add(new CleaningModel("Clean bathroom","Natasha"));
 		models.add(new CleaningModel("Clean kitchen","Yael"));
-		models.add(new CleaningModel("Clean toilet","Hadas"));
-
 		return models;
 	}
 }

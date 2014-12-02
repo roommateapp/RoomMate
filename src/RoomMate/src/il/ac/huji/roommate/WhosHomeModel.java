@@ -1,33 +1,38 @@
 package il.ac.huji.roommate;
 
+import android.graphics.Bitmap;
 import android.media.Image;
+import android.util.Log;
 
 public class WhosHomeModel {
 
 	private String name;
-	//private Image img;
+	private Bitmap img;
+	private boolean atHome;
 
-	//public WhosHomeModel(String name, Image image){
-	public WhosHomeModel(String name){
-
-		this.name = name;
-		//this.img = image;
+	public WhosHomeModel(String pName, boolean pAtHome, Bitmap pImage){
+		Log.d("tt", "2");
+		name = pName;
+		img = pImage;
+		atHome = pAtHome;
 	}
-
-
 
 	public String getName() {
 		return name;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setName(String pName) {
+		name = pName;
 	}
-	//	public Image getImage() {
-	//		return img;
-	//	}
-	//	public void setImage(Image img) {
-	//		this.img = img;
-	//	}
+	public Bitmap getImage() {
+		return img;
+	}
+	public void setImage(Bitmap pImage) {
+		img = pImage;
+	}
 
+	public boolean isAtHome()
+	{
+		return atHome;
+	}
 
 }

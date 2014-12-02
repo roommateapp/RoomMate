@@ -15,7 +15,8 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_margin="4dp"
-            android:text="for period: " >
+            android:text="current balance for: "
+            android:textColor="#006837" >
         </TextView>
 
         <TextView
@@ -24,23 +25,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@id/balance_period_txt"
-            android:text="01/08/2014" />
-
-        <TextView
-            android:id="@+id/balance_between"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_toRightOf="@id/balance_start"
-            android:text=" - " />
-
-        <TextView
-            android:id="@+id/balance_end"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_toRightOf="@id/balance_between"
-            android:text="today" />
+            android:textColor="#006837" />
     </RelativeLayout>
 
     <View
@@ -68,9 +53,9 @@
             android:layout_height="wrap_content"
             android:layout_margin="6dp"
             android:layout_weight="1"
-            android:background="#A3C1AD"
             android:padding="4dp"
-            android:text="My total" />
+            android:text="My total"
+            android:textColor="#006837" />
 
         <TextView
             android:id="@+id/my_bebt"
@@ -78,9 +63,8 @@
             android:layout_height="wrap_content"
             android:layout_margin="6dp"
             android:layout_weight="1"
-            android:background="#ACE1AF"
             android:padding="4dp"
-            android:text="4,000" />
+            android:textColor="#006837" />
 
         <TextView
             android:id="@+id/my_credit"
@@ -88,10 +72,18 @@
             android:layout_height="wrap_content"
             android:layout_margin="6dp"
             android:layout_weight="1"
-            android:background="#A3C1AD"
             android:padding="4dp"
-            android:text="900" />
+            android:textColor="#006837" />
     </LinearLayout>
+
+    <View
+        android:id="@+id/view2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/linearLayout2"
+        android:layout_margin="1dp"
+        android:background="#DADADC" >
+    </View>
 
     <!-- Other's balance -->
 
@@ -99,7 +91,7 @@
         android:id="@+id/titles"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/linearLayout2"
+        android:layout_below="@id/view2"
         android:layout_centerHorizontal="true"
         android:orientation="horizontal"
         android:weightSum="3" >
@@ -110,9 +102,10 @@
             android:layout_height="wrap_content"
             android:layout_margin="6dp"
             android:layout_weight="1"
-            android:background="#00000000"
             android:padding="4dp"
             android:text="Roommate:"
+            android:textColor="#006837"
+            android:textSize="14sp"
             android:textStyle="bold" />
 
         <TextView
@@ -121,9 +114,10 @@
             android:layout_height="wrap_content"
             android:layout_margin="6dp"
             android:layout_weight="1"
-            android:background="#00000000"
             android:padding="4dp"
             android:text="Debt:"
+            android:textColor="#006837"
+            android:textSize="14sp"
             android:textStyle="bold" />
 
         <TextView
@@ -132,9 +126,10 @@
             android:layout_height="wrap_content"
             android:layout_margin="6dp"
             android:layout_weight="1"
-            android:background="#00000000"
             android:padding="4dp"
             android:text="Credit:"
+            android:textColor="#006837"
+            android:textSize="14sp"
             android:textStyle="bold" />
     </LinearLayout>
 
@@ -142,25 +137,26 @@
         android:id="@+id/view3"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_alignParentBottom="true"
         android:layout_below="@id/titles"
         android:layout_marginBottom="1dp"
-        android:background="#DADADC" >
+        android:background="#006837" >
     </View>
 
     <ListView
         android:id="@android:id/list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/titles" >
+        android:layout_below="@id/view3" >
     </ListView>
 
-    <Button
-        android:id="@+id/load_earlier_balance"
+    <TextView
+        android:id="@+id/info_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:text="Load previous balances" />
+        android:gravity="center_horizontal"
+        android:text="If you wish to change the balance calculation period, go to Home-Settings"
+        android:textColor="#006837" />
 
 </RelativeLayout>

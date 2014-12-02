@@ -62,40 +62,4 @@
         android:text="Done by"
         android:textStyle="bold" />
 
-    <RelativeLayout
-        android:id="@+id/last_modified"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_margin="4dp" >
-
-        <TextView
-            android:id="@+id/last_modified_txt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Last modified by " />
-
-        <TextView
-            android:id="@+id/last_modified_by"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/last_modified_txt"
-            android:text="Natasha" />
-
-        <TextView
-            android:id="@+id/last_modified_on_txt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/last_modified_by"
-            android:text=" on " />
-
-        <TextView
-            android:id="@+id/last_modified_on"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/last_modified_on_txt"
-            android:text="15/08/2014" />
-    </RelativeLayout>
-
 </RelativeLayout>

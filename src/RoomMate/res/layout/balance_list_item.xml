@@ -11,9 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="6dp"
         android:layout_weight="1"
-        android:background="#A3C1AD"
-        android:padding="4dp"
-        android:text="Natasha" />
+        android:padding="4dp"/>
 
     <TextView
         android:id="@+id/debt_ammount"
@@ -21,9 +19,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="6dp"
         android:layout_weight="1"
-        android:background="#ACE1AF"
-        android:padding="4dp"
-        android:text="4,000" />
+        android:padding="4dp" />
 
     <TextView
         android:id="@+id/credit_ammount"
@@ -31,8 +27,6 @@
         android:layout_height="wrap_content"
         android:layout_margin="6dp"
         android:layout_weight="1"
-        android:background="#A3C1AD"
-        android:padding="4dp"
-        android:text="900" />
+        android:padding="4dp"/>
 
 </LinearLayout>

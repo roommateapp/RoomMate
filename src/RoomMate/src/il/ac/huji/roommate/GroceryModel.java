@@ -2,26 +2,36 @@ package il.ac.huji.roommate;
 
 public class GroceryModel {
 
-	private String task;
-	private String person;
+	private String grocery;
+	private boolean checked;
+	private String groceryParseId;
 
-	public GroceryModel(String task, String person) {
+	public GroceryModel(String grocery, boolean checked, String groceryParseId) {
 		super();
-		this.setTask(task);
-		this.setPerson(person);
+		this.setGrocery(grocery);
+		this.setChecked(checked);
+		this.setGroceryParseId(groceryParseId);
 	}
 
-	public String getTask() {
-		return task;
+	public String getGrocery() {
+		return grocery;
 	}
-	public void setTask(String task) {
-		this.task = task;
+	public void setGrocery(String grocery) {
+		this.grocery = grocery;
 	}
-	public String getPerson() {
-		return person;
+	public boolean getChecked() {
+		return checked;
 	}
-	public void setPerson(String counter) {
-		this.person = counter;
+	public void setChecked(boolean checked) {
+		this.checked = checked;
+	}
+
+	public String getGroceryParseId() {
+		return groceryParseId;
+	}
+
+	public void setGroceryParseId(String groceryParseId) {
+		this.groceryParseId = groceryParseId;
 	}
 
 }

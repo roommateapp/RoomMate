@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal" >
+
+    <RelativeLayout
+        android:id="@+id/writers_details"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_margin="4dp" >
+
+        <ImageView
+            android:id="@+id/writer_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:contentDescription="@drawable/ic_launcher"
+            android:src="@drawable/ic_launcher" />
+
+        <TextView
+            android:id="@+id/writer_name"
+            android:layout_width="85dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/writer_img"
+            android:gravity="center_horizontal"
+            android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/note_content"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@+id/delete_item"
+        android:layout_toRightOf="@+id/writers_details"
+        android:lineSpacingExtra="2dp"
+        android:padding="2dp" />
+
+    <Button
+        android:id="@+id/delete_item"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:gravity="center"
+        android:text="X"
+        android:textColor="#ffffff" />
+
+
+</RelativeLayout>

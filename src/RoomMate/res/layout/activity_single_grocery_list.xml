@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id = "@+id/rel_single_grocey_list"
     android:layout_width="match_parent"
+    android:focusable="true" 
+    android:focusableInTouchMode="true"
+    android:background="#ffffff"
     android:layout_height="match_parent" >
 
     <EditText
@@ -13,20 +17,12 @@
         android:layout_marginLeft="4dp"
         android:layout_marginTop="14dp"
         android:hint="add new item"
-        android:inputType="textMultiLine" >
+        android:inputType="textMultiLine"
+        android:maxLines="1" >
     </EditText>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_alignParentBottom="true"
-        android:layout_below="@id/new_grocery"
-        android:layout_marginBottom="1dp"
-        android:background="#DADADC" >
-    </View>
-
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/add_grocery"
         android:layout_width="60dp"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/new_grocery"
@@ -36,7 +32,15 @@
         android:id="@android:id/list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/new_grocery" >
+        android:layout_below="@id/new_grocery">
     </ListView>
+
+    <Button
+        android:id="@+id/back_to_lists_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="Back to all grocery lists" />
 
 </RelativeLayout>

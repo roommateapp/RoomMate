@@ -17,11 +17,13 @@
                 android:id="@+id/new_bill_name"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="4dp"
-                android:background="#A3C1AD"
+                android:layout_margin="10dp"
+                android:gravity="center_horizontal"
                 android:hint="title"
                 android:inputType="text"
-                android:padding="3dp" />
+                android:padding="3dp"
+                android:textColor="#006837"
+                android:textSize="35sp" />
 
             <View
                 android:id="@+id/view1"
@@ -33,53 +35,23 @@
             </View>
 
             <EditText
-                android:id="@+id/new_bill_ammount"
+                android:id="@+id/new_bill_amount"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/view1"
                 android:layout_margin="4dp"
-                android:background="#ACE1AF"
-                android:hint="ammount"
+                android:gravity="center_horizontal"
+                android:hint="amount"
                 android:inputType="numberDecimal"
-                android:padding="3dp" />
+                android:padding="3dp"
+                android:textColor="#006837"
+                android:textSize="30sp" />
 
             <View
                 android:id="@+id/view2"
                 android:layout_width="fill_parent"
                 android:layout_height="1dp"
-                android:layout_below="@id/new_bill_ammount"
-                android:layout_margin="1dp"
-                android:background="#DADADC" >
-            </View>
-
-            <TextView
-                android:id="@+id/due_date_txt"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/view2"
-                android:layout_marginLeft="4dp"
-                android:layout_marginRight="4dp"
-                android:layout_marginTop="4dp"
-                android:background="#A3C1AD"
-                android:padding="3dp"
-                android:text="Due date:" />
-
-            <DatePicker
-                android:id="@+id/datePicker1"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/due_date_txt"
-                android:layout_marginBottom="4dp"
-                android:layout_marginLeft="4dp"
-                android:layout_marginRight="4dp"
-                android:background="#A3C1AD"
-                android:calendarViewShown="false" />
-
-            <View
-                android:id="@+id/view3"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_below="@id/datePicker1"
+                android:layout_below="@id/new_bill_amount"
                 android:layout_margin="1dp"
                 android:background="#DADADC" >
             </View>
@@ -88,134 +60,123 @@
                 android:id="@+id/relativeLayout1"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/view3"
-                android:layout_margin="4dp"
-                android:background="#ACE1AF" >
+                android:layout_below="@id/view2"
+                android:layout_margin="4dp" >
 
                 <CheckBox
                     android:id="@+id/is_paid"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:checked="true" />
+                    android:layout_height="wrap_content" />
 
                 <TextView
                     android:id="@+id/is_payed_txt"
                     android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_centerVertical="true"
                     android:layout_toRightOf="@id/is_paid"
                     android:padding="3dp"
-                    android:text="Already payed" />
+                    android:text="Already paid"
+                    android:textColor="#006837" />
+
+                <View
+                    android:id="@+id/view7"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@id/is_payed_txt"
+                    android:layout_margin="1dp"
+                    android:background="#DADADC" >
+                </View>
             </RelativeLayout>
 
-            <TextView
-                android:id="@+id/pay_date_txt"
+            <RelativeLayout
+                android:id="@+id/rel_date_pickers"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/relativeLayout1"
-                android:layout_marginLeft="4dp"
-                android:layout_marginRight="4dp"
-                android:layout_marginTop="4dp"
-                android:background="#ACE1AF"
-                android:padding="3dp"
-                android:text="Payed on:" />
+                android:layout_margin="4dp" >
 
-            <DatePicker
-                android:id="@+id/datePicker2"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/pay_date_txt"
-                android:layout_marginBottom="4dp"
-                android:layout_marginLeft="4dp"
-                android:layout_marginRight="4dp"
-                android:background="#ACE1AF"
-                android:calendarViewShown="false" />
+                <TextView
+                    android:id="@+id/due_date_txt"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginTop="4dp"
+                    android:padding="3dp"
+                    android:text="Due date"
+                    android:textColor="#006837" />
+
+                <DatePicker
+                    android:id="@+id/datePicker1"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/due_date_txt"
+                    android:layout_marginBottom="4dp"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="4dp"
+                    android:calendarViewShown="false"
+                    android:textColor="#006837" />
+
+                <TextView
+                    android:id="@+id/pay_date_txt"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginTop="4dp"
+                    android:padding="3dp"
+                    android:text="Paid on"
+                    android:textColor="#006837" />
+
+                <DatePicker
+                    android:id="@+id/datePicker2"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/pay_date_txt"
+                    android:layout_marginBottom="4dp"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="4dp"
+                    android:calendarViewShown="false"
+                    android:textColor="#006837" />
+            </RelativeLayout>
+
+            <View
+                android:id="@+id/view3"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/rel_date_pickers"
+                android:layout_margin="1dp"
+                android:background="#DADADC" >
+            </View>
 
             <TextView
-                android:id="@+id/payed_by_txt"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/datePicker2"
-                android:layout_marginBottom="4dp"
-                android:layout_marginLeft="4dp"
-                android:layout_marginTop="4dp"
-                android:background="#ACE1AF"
-                android:padding="3dp"
-                android:text="Payed by:" />
-
-            <ExpandableListView
-                android:id="@+id/payed_by_chooser"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="4dp"
-                android:layout_marginRight="4dp"
-                android:layout_marginTop="4dp"
-                android:layout_toRightOf="@id/payed_by_txt"
-                android:background="#ACE1AF" >
-            </ExpandableListView>
+                android:id="@+id/image_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_below="@id/view3"
+                android:layout_centerVertical="true"
+                android:gravity="center_vertical"
+                android:layout_margin="10dp"
+                android:text="Image"
+                android:textColor="#006837"
+                android:textSize="16sp" />
 
             <View
                 android:id="@+id/view4"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_below="@id/payed_by_txt"
+                android:layout_below="@id/image_txt"
                 android:layout_margin="1dp"
                 android:background="#DADADC" >
             </View>
-
-            <RelativeLayout
-                android:id="@+id/recipt_image"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/view4"
-                android:layout_margin="4dp"
-                android:background="#ACE1AF" >
-
-                <TextView
-                    android:id="@+id/image_txt"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_margin="4dp"
-                    android:text="Add image" />
-
-                <Button
-                    android:id="@+id/set_recipt_image"
-                    android:layout_width="wrap_content"
-                    android:layout_height="50dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginRight="30dp"
-                    android:drawableTop="@android:drawable/ic_menu_gallery" />
-            </RelativeLayout>
-
-            <ImageView
-                android:id="@+id/bill_image"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/view4"
-                android:layout_centerHorizontal="true"
-                android:layout_margin="4dp"
-                android:contentDescription="@drawable/ic_launcher"
-                android:visibility="invisible" >
-            </ImageView>
 
             <Button
                 android:id="@+id/save_bill"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/recipt_image"
+                android:layout_below="@id/view4"
                 android:layout_centerHorizontal="true"
                 android:text="Save bill" />
-
-            <View
-                android:id="@+id/view5"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_below="@id/payed_by_chooser"
-                android:layout_margin="1dp"
-                android:background="#DADADC" >
-            </View>
         </RelativeLayout>
     </ScrollView>
 

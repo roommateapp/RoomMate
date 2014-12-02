@@ -34,7 +34,7 @@ public class SlideMenuCustomAdapter extends BaseAdapter{
 		ImageView imgIcon = (ImageView) convertView.findViewById(R.id.icon);
 		TextView txtTitle = (TextView) convertView.findViewById(R.id.title);
 		
-		Typeface font = Typeface.createFromAsset(context.getAssets(), "Montserrat-Regular.ttf");
+		Typeface font = Typeface.createFromAsset(context.getAssets(), "SinkinSans-400Regular.otf");
 
 		txtTitle.setTypeface(font);
 

@@ -1,15 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
-    
-    <com.google.android.gms.common.SignInButton
-    android:id="@+id/sign_in_button"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_centerHorizontal="true"
-   	android:text="@string/common_signin_button_text_long"  />
-    
+    android:layout_gravity="center" >
 
-</LinearLayout>
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/sign_in_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/sign_in_text"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="28dp" >
+    </com.google.android.gms.common.SignInButton>
+
+    <TextView
+        android:id="@+id/sign_in_text"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="99dp"
+        android:gravity="center_horizontal"
+        android:text="@string/sign_in_text"
+        android:textColor="#006837"
+        android:lineSpacingExtra="3dp"
+        android:textSize="20sp" />
+
+</RelativeLayout>

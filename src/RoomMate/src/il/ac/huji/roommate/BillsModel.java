@@ -1,28 +1,28 @@
 package il.ac.huji.roommate;
 
-import java.sql.Date;
-
-import android.util.Log;
-
 public class BillsModel {
 	private String name;
 	private double ammoumt;
-	//  private Date due_date;
+	private String dueDate;
+	private boolean notified;
+	private String parseId;
 
-	public BillsModel(String name, float ammount, Date due_date) {
+	public BillsModel(String name, double ammount, String dueDate, boolean notified, String parseId) {
 		super();
-		this.name = name;
-		this.ammoumt = ammount;
-		//     this.due_date = due_date;
+		this.setName(name);
+		this.setAmmoumt(ammount);
+		this.setDueDate(dueDate);
+		this.setNotified(notified);
+		this.setParseId(parseId);
 	}
 
-	public BillsModel(String name, double d) {
-		super();
-		this.name = name;
-		this.ammoumt = d;
-		//    this.due_date = null;
-		Log.i("IN MINI","SSSS");
-	}
+//	public BillsModel(String name, double d) {
+//		super();
+//		this.name = name;
+//		this.ammoumt = d;
+//		this.setDueDate("");
+//		this.setNotified(false);
+//	}
 
 	public String getName() {
 		return name;
@@ -36,17 +36,31 @@ public class BillsModel {
 		return ammoumt;
 	}
 
-	public void setAmmoumt(float ammoumt) {
+	public void setAmmoumt(double ammoumt) {
 		this.ammoumt = ammoumt;
 	}
 
-	//	public Date getDueDate() {
-	//		return due_date;
-	//	}
-	//
-	//	public void setDueDate(Date due_date) {
-	//		this.due_date = due_date;
-	//	}
-	//
-	//	
+	public String getDueDate() {
+		return dueDate;
+	}
+
+	public void setDueDate(String dueDate) {
+		this.dueDate = dueDate;
+	}
+
+	public boolean isNotified() {
+		return notified;
+	}
+
+	public void setNotified(boolean notified) {
+		this.notified = notified;
+	}
+
+	public String getParseId() {
+		return parseId;
+	}
+
+	public void setParseId(String parseId) {
+		this.parseId = parseId;
+	}
 }

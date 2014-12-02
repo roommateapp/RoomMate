@@ -4,24 +4,40 @@
     <string name="app_name">RoomMate</string>
     <string name="action_settings">Settings</string>
     <string name="imgdesc">imgdesc</string>
-	<string name="sign_in_to_roommate">Sign In to Roommate</string>
-	
-	<string name="create_new_home_button">Create new Home</string>
-	<string name="no_existing_home_text">If you received a home code from your
-	     friend please enter it here:</string>
-	<string name="home_code">home code</string>
-	<string name="confirm_button">Confirm</string>
-	<string name="no_existing_home_label">Please choose</string>
-	<string name="sign_out_button">Sign out and choose different account</string>
-	
-	
+    <string name="sign_in_to_roommate">Sign-in to RoomMate</string>
+    <string name="create_new_home_button">Create a new home</string>
+    <string name="no_existing_home_message">You don\'t have a home in RoomMate yet! \n Would you like to create a new home?</string>
+    <string name="no_existing_home_text">Or to join an existing home with a home \n code that you received from your roommate?</string>
+    <string name="home_code">home code</string>
+    <string name="no_existing_home_label">Please choose</string>
+    <string name="sign_out_button">Sign out and choose a different account</string>
+     <string name="sign_in_text">Welcome to RoomMate app! \n 
+         If you\'re living with roommates and wish to make your lives easier by letting RoomMate manage your household, 
+         go ahead and sign in!</string>
+    
+    <string name="add_roommates_suggest_title">Let\'s invite your roommates!</string>
+    <string name="add_roommates_suggest_text">Do you want to invite your roommates to the home you\'ve just created? You can also do it later, via Home-Settings</string>
+    <string name="add_roommates_title">Let\'s start</string>
+    <string name="add_roommates_text">Send unique invitation codes to 
+	    your roommates so they could connect to this home account. Please send each message to only ONE person.</string>
+    <string name="add_roommates_send_first_button">Send to the FIRST person</string>
+    <string name="add_additional_person_title">Add more</string>
+    <string name="add_additional_person_text">Do you want to add another roommate?</string>
+    <string name="tap_instructions">Long click to set home location</string>
+
+    <!-- Buttons -->
+    <string name="confirm_button">Confirm</string>
+    <string name="later">Not now, thanks</string>
+    <string name="yes">Yes</string>
+    <string name="cancel">Cancel</string>
+
     <string-array name="titles">
         <item>Home board</item>
         <item>Grocery lists</item>
         <item>Cleaning tasks</item>
         <item>Bills</item>
         <item>Balance</item>
-        <item>How is home now?</item>
+        <item>Who is home now?</item>
         <item>Home settings</item>
         <item>Sign Out</item>
     </string-array>
@@ -34,8 +50,9 @@
         <item>@android:drawable/ic_menu_sort_by_size</item>
         <item>@android:drawable/ic_menu_myplaces</item>
         <item>@android:drawable/ic_menu_manage</item>
-        
-        
     </array>
+
+    <drawable name="pressed">#B2D1C3</drawable>
+    <drawable name="none">#ffffff</drawable>
 
 </resources>

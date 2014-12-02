@@ -1,6 +1,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/hhh"
     android:layout_width="match_parent"
+    android:background="#ffffff"
     android:layout_height="match_parent" >
 
     <EditText
@@ -22,7 +23,7 @@
         android:layout_toRightOf="@id/new_bill"
         android:drawableStart="@android:drawable/ic_menu_add" />
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/titles"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -32,87 +33,57 @@
 
         <TextView
             android:id="@+id/bill_name_title"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
             android:layout_margin="6dp"
-            android:layout_weight="0.01"
             android:maxLines="1"
             android:padding="4dp"
             android:text="Bill name"
+            android:textColor="#006837"
+            android:textSize="16sp"
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/bill_ammount_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
             android:layout_margin="6dp"
-            android:layout_marginLeft="10dp"
             android:padding="4dp"
-            android:text="Ammount"
+            android:text="Amount"
+            android:textColor="#006837"
+            android:textSize="16sp"
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/bill_due_date_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
             android:layout_margin="6dp"
             android:padding="4dp"
             android:text="Due date"
+            android:textColor="#006837"
+            android:textSize="16sp"
             android:textStyle="bold" />
-    </LinearLayout>
-
-    <View
-        android:id="@+id/view2"
+    </RelativeLayout>
+    
+      <View
+        android:id="@+id/view1"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_alignParentBottom="true"
         android:layout_below="@id/titles"
-        android:layout_marginBottom="1dp"
-        android:background="#DADADC" >
+        android:layout_margin="1dp"
+        android:background="#006837" >
     </View>
 
     <ListView
         android:id="@android:id/list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/titles" >
+        android:layout_below="@id/view1"
+        android:layout_margin="4dp" >
     </ListView>
 
-     <RelativeLayout
-        android:id="@+id/last_modified"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_margin="4dp" >
-
-        <TextView
-            android:id="@+id/last_modified_txt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Last modified by " />
-
-        <TextView
-            android:id="@+id/last_modified_by"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/last_modified_txt"
-            android:text="Natasha" />
-
-        <TextView
-            android:id="@+id/last_modified_on_txt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/last_modified_by"
-            android:text=" on " />
-
-        <TextView
-            android:id="@+id/last_modified_on"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/last_modified_on_txt"
-            android:text="15/08/2014" />
-    </RelativeLayout>
-    
-    
 </RelativeLayout>

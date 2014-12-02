@@ -6,12 +6,16 @@ import com.google.android.gms.common.api.GoogleApiClient.ConnectionCallbacks;
 import com.google.android.gms.common.api.GoogleApiClient.OnConnectionFailedListener;
 import com.google.android.gms.plus.Plus;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.IntentSender.SendIntentException;
+import android.graphics.Typeface;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.TextView;
 
 
 public class SignInActivity extends Activity implements OnClickListener, ConnectionCallbacks, OnConnectionFailedListener {
@@ -37,12 +41,33 @@ public class SignInActivity extends Activity implements OnClickListener, Connect
 	 */
 	private ConnectionResult mConnectionResult;
 	
+	@SuppressLint("InflateParams")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) 
 	{
-		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_sign_in);
+		
+		getActionBar().show();
+		
+		LayoutInflater mInflater = LayoutInflater.from(this);
+		View mCustomView = mInflater.inflate(R.layout.custom_actionbar, null);
+		TextView mTitleTextView = (TextView) mCustomView.findViewById(R.id.title_text);
+
+		Typeface fontBold = Typeface.createFromAsset(getAssets(), "SinkinSans-600SemiBold.otf");
+		mTitleTextView.setTypeface(fontBold);
+
+		mTitleTextView.setText("Sign in to RoomMate");
+
+		getActionBar().setDisplayShowHomeEnabled(false);
+		getActionBar().setDisplayShowTitleEnabled(false);
+		
+		getActionBar().setCustomView(mCustomView);
+		getActionBar().setDisplayShowCustomEnabled(true);
+		
+		TextView txtView = (TextView)findViewById(R.id.sign_in_text);
+		Typeface font = Typeface.createFromAsset(getAssets(), "SinkinSans-600SemiBold.otf");
+		txtView.setTypeface(font);
 		
 		// Here we initialize connection with Google API
 		mGoogleApiClient = new GoogleApiClient.Builder(this)
@@ -142,7 +167,7 @@ public class SignInActivity extends Activity implements OnClickListener, Connect
 	{
 		mSignInClicked = false;
 		Intent intent = new Intent();
-        setResult(MainActivity.SIGN_IN_ACTIVITY_CODE ,intent);  
+        setResult(MainActivity.RESULT_OK ,intent);  
         finish();//finishing activity  
 	}
 
