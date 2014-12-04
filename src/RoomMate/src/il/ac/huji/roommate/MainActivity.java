@@ -340,6 +340,12 @@ AddRoommatesSugestListener, AddRoommatesListener
 							{
 								// The user already exists in database
 								parsePersonObject = personList.get(0);
+								try{
+									parsePersonObject = parsePersonObject.fetchIfNeeded();
+								}
+								catch (ParseException e1){
+									e1.printStackTrace();
+								}
 								userName = parsePersonObject.getString(PERSON_FIELD_USERNAME);
 							}
 

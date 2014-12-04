@@ -89,6 +89,10 @@
             android:name="il.ac.huji.roommate.ChooseHomeLocationActivity"
             android:label="Choose home location" >
         </activity>
+        <activity
+            android:name=".BillImageActivity"
+            android:label="Bill's image" >
+        </activity>
 
         <service
             android:name="il.ac.huji.roommate.BalanceService"

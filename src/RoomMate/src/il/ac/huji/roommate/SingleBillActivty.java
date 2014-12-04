@@ -1,12 +1,14 @@
 package il.ac.huji.roommate;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Calendar;
 import java.util.List;
 
+import com.google.android.gms.internal.in;
 import com.parse.GetCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
@@ -74,7 +76,7 @@ public class SingleBillActivty extends Activity{
 	private Bundle bundle;
 	private boolean isNotified;
 	private String billParseId = null;
-	protected boolean ready;
+	protected boolean ready = false;
 
 	@SuppressLint("InflateParams")
 	@Override
@@ -136,13 +138,34 @@ public class SingleBillActivty extends Activity{
 		imageTxt.setOnClickListener(new OnClickListener() {			
 			@Override
 			public void onClick(View arg0) {
-				Intent intent = new Intent();
-				intent.setType("image/*");
-				intent.setAction(Intent.ACTION_GET_CONTENT);
-				//intent.putExtra(Intent.EXTRA_LOCAL_ONLY, true);
-				//intent.addCategory(Intent.CATEGORY_OPENABLE);
-				startActivityForResult(Intent.createChooser(intent,
-						"Select Picture"), IMAGE_RQST_CODE);
+				//				try {
+				//					newBillObj = newBillObj.fetch();
+				//				} catch (ParseException e) {
+				//					e.printStackTrace();
+				//				}
+				if (newBillObj != null){
+					Boolean hasImg = newBillObj.getBoolean("hasImage");
+					if (!hasImg){
+						Intent intent = new Intent();
+						intent.setType("image/*");
+						intent.setAction(Intent.ACTION_GET_CONTENT);
+						startActivityForResult(Intent.createChooser(intent,
+								"Select Picture"), IMAGE_RQST_CODE);
+					}
+					else {
+						// open the BillImageActivity, put billID in extras
+						Intent intent = new Intent(getApplication(), BillImageActivity.class);
+						intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+						intent.putExtra("billId", billParseId);
+						getApplication().startActivity(intent);
+					}
+				} else {
+					Intent intent = new Intent();
+					intent.setType("image/*");
+					intent.setAction(Intent.ACTION_GET_CONTENT);
+					startActivityForResult(Intent.createChooser(intent,
+							"Select Picture"), IMAGE_RQST_CODE);
+				}
 			}
 		});
 
@@ -358,17 +381,15 @@ public class SingleBillActivty extends Activity{
 					}
 
 					newBillObj.put("notified", false);
-
-					// save image!
-					//					if (ready){
-					//						Log.i("IMAGE", " FILE NOT NULL");
-					//						newBillObj.put("billPicture", file);
-					//					}
-
+					newBillObj.put("hasImage", false);
 
 					newBillObj.saveInBackground(new SaveCallback() {
 						@Override
 						public void done(ParseException e) {
+
+							Toast.makeText(getApplicationContext(), "Saving bill", 
+									Toast.LENGTH_LONG).show(); 
+
 							ParseQuery<ParseObject> query = ParseQuery.getQuery("House");
 							query.getInBackground(houseId, new GetCallback<ParseObject>() {
 								private ParseObject houseFetch;
@@ -385,8 +406,16 @@ public class SingleBillActivty extends Activity{
 									house.saveInBackground(new SaveCallback() {
 										@Override
 										public void done(ParseException e) {
-											Toast.makeText(getApplicationContext(), "Saving bill", 
-													Toast.LENGTH_LONG).show(); 
+
+											onBackPressed();
+
+											if (ready){
+												newBillObj.put("billPicture", file);
+												newBillObj.put("hasImage", true);
+												newBillObj.saveInBackground();
+												ready = false;
+											}
+
 											// set notification 3 days before bill due-date
 											int billNotification = houseFetch.getInt("billsNotificationInterval");
 											Calendar calNotification = Calendar.getInstance();
@@ -421,7 +450,6 @@ public class SingleBillActivty extends Activity{
 							});
 						}
 					});
-					//					onBackPressed();	
 				}
 			});
 		}
@@ -455,12 +483,12 @@ public class SingleBillActivty extends Activity{
 						if (bytearray != null){
 							file = new ParseFile("billPicture"+".jpg", bytearray);
 							Log.i("IMAGE", bytearray.toString());
-							Toast.makeText(getApplicationContext(), "Saving bill's image", 
-									Toast.LENGTH_LONG).show(); 
+
 							file.saveInBackground(new SaveCallback() {
 								@Override
 								public void done(ParseException e) {
 									Log.i("IMAGE", " FILE NOT NULL");
+									ready = true;
 
 									//									if (newBillObj == null){
 									//										newBillObj = new ParseObject("SingleBill");
@@ -471,8 +499,8 @@ public class SingleBillActivty extends Activity{
 									//											e1.printStackTrace();
 									//										}
 									//									}
-									newBillObj.put("billPicture", file);
-									newBillObj.saveInBackground();
+									//									newBillObj.put("billPicture", file);
+									//									newBillObj.saveInBackground();
 								}
 							});
 						}
