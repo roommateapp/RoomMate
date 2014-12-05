@@ -80,7 +80,7 @@ public class HomeSettingsActivity extends Fragment implements OnClickListener {
 		billsEdit = (EditText)rootView.findViewById(R.id.bills_notification_edit);
 		TextView locationTxt = (TextView)rootView.findViewById(R.id.home_location_txt);
 		//		Button locationBtn = (Button)rootView.findViewById(R.id.set_location);
-		TextView imageTxt = (TextView)rootView.findViewById(R.id.image_txt);
+		//TextView imageTxt = (TextView)rootView.findViewById(R.id.image_txt);
 		//		Button immageBtn = (Button)rootView.findViewById(R.id.set_image);
 		Button saveChanges = (Button)rootView.findViewById(R.id.save_changes);
 
@@ -96,11 +96,11 @@ public class HomeSettingsActivity extends Fragment implements OnClickListener {
 		billsTxt.setTypeface(font);
 		billsTxtEnd.setTypeface(font);
 		locationTxt.setTypeface(font);
-		imageTxt.setTypeface(font);
+		//imageTxt.setTypeface(font);
 		saveChanges.setTypeface(font);
 
 		inviteBtn.setOnClickListener(this);
-		imageTxt.setOnClickListener(this);
+		//imageTxt.setOnClickListener(this);
 		locationTxt.setOnClickListener(this);
 		saveChanges.setOnClickListener(this);
 

@@ -136,7 +136,7 @@
         android:background="#DADADC" >
     </View>
 
-    <TextView
+    <!-- <TextView
         android:id="@+id/image_txt"
         android:layout_width="fill_parent"
         android:layout_height="70dp"
@@ -155,13 +155,13 @@
         android:layout_below="@id/image_txt"
         android:layout_margin="1dp"
         android:background="#DADADC" >
-    </View>
+    </View>  -->
 
     <TextView
         android:id="@+id/invite_roommates"
         android:layout_width="fill_parent"
         android:layout_height="70dp"
-        android:layout_below="@id/view6"
+        android:layout_below="@id/view5"
         android:background="@drawable/list_item_pressed"
         android:gravity="center_vertical"
         android:padding="14dp"
