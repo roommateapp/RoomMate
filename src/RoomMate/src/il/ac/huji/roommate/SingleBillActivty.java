@@ -42,7 +42,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class SingleBillActivty extends Activity{
+public class SingleBillActivty extends Activity implements OnClickListener{
 
 	private String houseId;
 	private String billName;
@@ -50,6 +50,7 @@ public class SingleBillActivty extends Activity{
 	private ParseObject newBillObj;
 	private Double oldBillAmount;
 	private String userName;
+	private String userId;
 
 	final static int IMAGE_RQST_CODE = 1;
 	private Bitmap bitmap;
@@ -92,6 +93,8 @@ public class SingleBillActivty extends Activity{
 		isNotified = bundle.getBoolean("notified");
 		setTitle("Bill: " + billName);
 		userName = bundle.getString("userName");
+		userId = bundle.getString("userId");
+		
 		if (bundle.getString("billParseId")!=null)
 			billParseId = bundle.getString("billParseId");
 
@@ -135,39 +138,7 @@ public class SingleBillActivty extends Activity{
 
 		newBillName.setText(billName);
 
-		imageTxt.setOnClickListener(new OnClickListener() {			
-			@Override
-			public void onClick(View arg0) {
-				//				try {
-				//					newBillObj = newBillObj.fetch();
-				//				} catch (ParseException e) {
-				//					e.printStackTrace();
-				//				}
-				if (newBillObj != null){
-					Boolean hasImg = newBillObj.getBoolean("hasImage");
-					if (!hasImg){
-						Intent intent = new Intent();
-						intent.setType("image/*");
-						intent.setAction(Intent.ACTION_GET_CONTENT);
-						startActivityForResult(Intent.createChooser(intent,
-								"Select Picture"), IMAGE_RQST_CODE);
-					}
-					else {
-						// open the BillImageActivity, put billID in extras
-						Intent intent = new Intent(getApplication(), BillImageActivity.class);
-						intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-						intent.putExtra("billId", billParseId);
-						getApplication().startActivity(intent);
-					}
-				} else {
-					Intent intent = new Intent();
-					intent.setType("image/*");
-					intent.setAction(Intent.ACTION_GET_CONTENT);
-					startActivityForResult(Intent.createChooser(intent,
-							"Select Picture"), IMAGE_RQST_CODE);
-				}
-			}
-		});
+		imageTxt.setOnClickListener(this);
 
 		final DatePicker.OnDateChangedListener myLisener = new DatePicker.OnDateChangedListener() {
 			@Override
@@ -268,23 +239,7 @@ public class SingleBillActivty extends Activity{
 		}
 
 		if (!isNotified){ // can be changed only if not already notified
-			paidCheckbox.setOnClickListener(new View.OnClickListener() {  
-				public void onClick(final View v) {  
-					if (paidCheckbox.isChecked()){
-						dueDatePicker.setVisibility(View.GONE);
-						dueDateTxt.setVisibility(View.GONE);
-
-						paidDatePicker.setVisibility(View.VISIBLE);
-						payDateTxt.setVisibility(View.VISIBLE);
-					} else{
-						dueDatePicker.setVisibility(View.VISIBLE);
-						dueDateTxt.setVisibility(View.VISIBLE);
-
-						paidDatePicker.setVisibility(View.GONE);
-						payDateTxt.setVisibility(View.GONE);
-					}
-				}
-			});
+			paidCheckbox.setOnClickListener(this);
 
 			// save bill button, save all the changes to Parse
 			saveBillBtn.setOnClickListener(new OnClickListener() {
@@ -424,8 +379,8 @@ public class SingleBillActivty extends Activity{
 											calNotification.set(Calendar.YEAR, yearToSave);
 											calNotification.set(Calendar.MONTH, monthToSave);
 											calNotification.set(Calendar.DAY_OF_MONTH, dayToSave);
-											calNotification.set(Calendar.HOUR_OF_DAY, 21);
-											calNotification.set(Calendar.MINUTE, 7);
+											calNotification.set(Calendar.HOUR_OF_DAY, 11);
+											calNotification.set(Calendar.MINUTE, 20);
 											calNotification.set(Calendar.SECOND, 00);
 
 											calNotification.add(Calendar.DAY_OF_YEAR, -billNotification);
@@ -435,12 +390,18 @@ public class SingleBillActivty extends Activity{
 											Intent myIntent = new Intent(getApplication(), BillNotificationReciever.class);
 											myIntent.putExtra("billName", newBillObj.getString("name"));
 											myIntent.putExtra("notificationDays", billNotification);
+											myIntent.putExtra("houseId", houseId);
+											myIntent.putExtra("userId", userId);
 
 											Log.i("BILL", "here 3.");
 
 											PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplication(), 1, myIntent, 0);
-											AlarmManager alarmManager = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
-											alarmManager.set(AlarmManager.RTC_WAKEUP, calNotification.getTimeInMillis(), pendingIntent);
+											AlarmManager billAlarmManager = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
+											billAlarmManager.setRepeating( AlarmManager.RTC_WAKEUP,
+													calNotification.getTimeInMillis(), 
+													86400000, //24 hours
+													pendingIntent);
+											
 
 											Log.i("BILL", "here 4.");
 											onBackPressed();
@@ -512,5 +473,59 @@ public class SingleBillActivty extends Activity{
 			}
 			break;
 		}
+	}
+	
+	public void onClick(View view){
+		switch (view.getId()){
+		case R.id.image_txt:
+			//			try {
+			//					newBillObj = newBillObj.fetch();
+			//				} catch (ParseException e) {
+			//					e.printStackTrace();
+			//				}
+			if (newBillObj != null){
+				Boolean hasImg = newBillObj.getBoolean("hasImage");
+				if (!hasImg){
+					Intent intent = new Intent();
+					intent.setType("image/*");
+					intent.setAction(Intent.ACTION_GET_CONTENT);
+					startActivityForResult(Intent.createChooser(intent,
+							"Select Picture"), IMAGE_RQST_CODE);
+				}
+				else {
+					// open the BillImageActivity, put billID in extras
+					Intent intent = new Intent(getApplication(), BillImageActivity.class);
+					intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+					intent.putExtra("billId", billParseId);
+					getApplication().startActivity(intent);
+				}
+			} else {
+				Intent intent = new Intent();
+				intent.setType("image/*");
+				intent.setAction(Intent.ACTION_GET_CONTENT);
+				startActivityForResult(Intent.createChooser(intent,
+						"Select Picture"), IMAGE_RQST_CODE);
+			}
+			break;
+		case R.id.is_paid:
+			if (!isNotified){
+				if (paidCheckbox.isChecked()){
+					dueDatePicker.setVisibility(View.GONE);
+					dueDateTxt.setVisibility(View.GONE);
+
+					paidDatePicker.setVisibility(View.VISIBLE);
+					payDateTxt.setVisibility(View.VISIBLE);
+				} else{
+					dueDatePicker.setVisibility(View.VISIBLE);
+					dueDateTxt.setVisibility(View.VISIBLE);
+
+					paidDatePicker.setVisibility(View.GONE);
+					payDateTxt.setVisibility(View.GONE);
+				}
+			}
+			break;
+		}
+			
+		
 	}
 }

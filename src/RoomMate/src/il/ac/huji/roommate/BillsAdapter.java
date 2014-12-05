@@ -33,15 +33,20 @@ public class BillsAdapter extends ArrayAdapter<BillsModel>{
 	private TextView dateView;
 	private View allView;
 	private String userName;
+	private String userId;
 
 
-	public BillsAdapter(Context context, ArrayList<BillsModel> modelsArrayList, String houseId, String userName) {
+	public BillsAdapter(Context context, ArrayList<BillsModel> modelsArrayList, 
+			String houseId, 
+			String userName,
+			String userId) {
 
 		super(context, R.layout.bills_item, modelsArrayList);
 		this.context = context;
 		this.modelsArrayList = modelsArrayList;
 		this.houseId = houseId;
 		this.userName = userName;
+		this.userId = userId;
 	}
 
 	public void updateModelList(BillsModel item){
@@ -123,14 +128,14 @@ public class BillsAdapter extends ArrayAdapter<BillsModel>{
 				public void onClick(View view)
 				{
 					Intent intent = new Intent(view.getContext(), SingleBillActivty.class);//view.getContext()
-					//					oldPos = position;
 					intent.putExtra("billname", modelsArrayList.get(position).getName());
 					intent.putExtra("houseId", houseId);
 					intent.putExtra("existingBill", true);
 					intent.putExtra("notified", modelsArrayList.get(position).isNotified());
 					intent.putExtra("userName", userName);
+					intent.putExtra("userId", userId);
 					intent.putExtra("billParseId", modelsArrayList.get(position).getParseId());
-					//					intent.putExtra("oldPos", oldPos);
+					
 					allView.getContext().startActivity(intent);
 				}
 			});

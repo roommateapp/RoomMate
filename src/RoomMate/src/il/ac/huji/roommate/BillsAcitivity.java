@@ -139,6 +139,7 @@ public class BillsAcitivity extends ListFragment {
 				intent.putExtra("existingBill", false);
 				intent.putExtra("notified", false);
 				intent.putExtra("userName", mainActivity.userName);
+				intent.putExtra("userId", mainActivity.parsePersonObject.getObjectId());
 				startActivity(intent);
 				newBillEdit.setText("");
 			}
@@ -156,7 +157,10 @@ public class BillsAcitivity extends ListFragment {
 			}
 		});
 
-		adapter = new BillsAdapter(getActivity(), models, mainActivity.homeIdParse, mainActivity.userName);
+		adapter = new BillsAdapter(getActivity(), models, 
+				mainActivity.homeIdParse, 
+				mainActivity.userName, 
+				mainActivity.parsePersonObject.getObjectId());
 		setListAdapter(adapter);
 
 

@@ -292,6 +292,7 @@ public class HomeSettingsActivity extends Fragment implements OnClickListener {
 					mainActivity.onHomeLocationChanged(l);
 				}
 			}
+			break;
 
 		default:
 			break;

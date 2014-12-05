@@ -11,7 +11,9 @@ import android.util.Log;
 
 import com.parse.GetCallback;
 import com.parse.ParseException;
+import com.parse.ParseInstallation;
 import com.parse.ParseObject;
+import com.parse.ParsePush;
 import com.parse.ParseQuery;
 
 public class BillNotificationService  extends Service 
@@ -31,16 +33,20 @@ public class BillNotificationService  extends Service
 	public void onStart(Intent intent, int startId)
 	{
 		
-		final String billName = intent.getStringExtra("billName");
-		final String notificationDays = intent.getStringExtra("notificationDays");
+		String billName = intent.getStringExtra("billName");
+		String notificationDays = intent.getStringExtra("notificationDays");
+		String houseId = intent.getStringExtra("houseId");
+		String userId = intent.getStringExtra("userId");
+		
+		String notificationMessage = billName + " bill's deadline is " + notificationDays + " away!";
 
 		Log.i("BILL" ," in service!");
 		mManager = (NotificationManager)getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
 
 		Intent intent1 = new Intent(getApplicationContext(), MainActivity.class);
-
+		
 		Notification notification = new Notification(R.drawable.notification_icon, 
-				billName + " bill's deadline is " + notificationDays + " away!", System.currentTimeMillis());
+				notificationMessage, System.currentTimeMillis());
 
 		intent1.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
@@ -49,6 +55,18 @@ public class BillNotificationService  extends Service
 		notification.flags |= Notification.FLAG_AUTO_CANCEL;
 		notification.setLatestEventInfo(getApplicationContext(), "RoomMate", "It's time to pay an upcoming bill!", 
 				pendingNotificationIntent);
+		
+		ParseQuery<ParseInstallation> pushQuery = ParseInstallation.getQuery();
+		pushQuery.whereEqualTo(MainActivity.PERSON_FIELD_HOUSE, houseId );
+		pushQuery.whereNotEqualTo("userId", userId);
+		//TODO:
+
+		// Send push notification to query
+		ParsePush push = new ParsePush();
+		push.setChannel("");
+		push.setQuery(pushQuery);
+		push.setMessage(notificationMessage);
+		push.sendInBackground();
 
 		mManager.notify(0, notification);							
 	}

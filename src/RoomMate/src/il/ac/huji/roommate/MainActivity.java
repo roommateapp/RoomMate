@@ -827,6 +827,7 @@ AddRoommatesSugestListener, AddRoommatesListener
 
 		ParseInstallation pi = ParseInstallation.getCurrentInstallation();
 		pi.put(PERSON_FIELD_HOUSE, homeIdParse);
+		pi.put("userId", parsePersonObject.getObjectId());
 		pi.saveInBackground();
 
 		homePeopleList = parseHomeObject.getList(HOUSE_FIELD_PERSONS);
