@@ -23,7 +23,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 @SuppressLint("NewApi")
-public class BalanceActivity extends ListFragment {
+public class BalanceFragment extends ListFragment {
 
 	private String userName;
 	private ArrayList<BalanceModel> models = new ArrayList<BalanceModel>();
@@ -59,7 +59,7 @@ public class BalanceActivity extends ListFragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 	{
 		super.onCreateView(inflater, container, savedInstanceState);
-		rootView = inflater.inflate(R.layout.activity_balance, container, false);
+		rootView = inflater.inflate(R.layout.balance_fragment, container, false);
 
 		myDebtTxt = (TextView)rootView.findViewById(R.id.my_bebt);
 		myCreditTxt = (TextView)rootView.findViewById(R.id.my_credit);

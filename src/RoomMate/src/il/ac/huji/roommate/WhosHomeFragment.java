@@ -33,7 +33,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 @SuppressLint("NewApi")
-public class WhosHomeActivity extends ListFragment implements OnClickListener {
+public class WhosHomeFragment extends ListFragment implements OnClickListener {
 
 	private MainActivity mainActivity;
 	private ArrayList<WhosHomeModel> models = new ArrayList<WhosHomeModel>();
@@ -52,7 +52,7 @@ public class WhosHomeActivity extends ListFragment implements OnClickListener {
 	@Override 
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 	{
-		View rootView = inflater.inflate(R.layout.activity_whos_home, container, false);
+		View rootView = inflater.inflate(R.layout.whos_home_fragment, container, false);
 
 		TextView whosHomeTxt = (TextView)rootView.findViewById(R.id.whos_home_txt);
 		Button changeLocationBtn = (Button)rootView.findViewById(R.id.whos_home_change_location);
@@ -175,7 +175,7 @@ public class WhosHomeActivity extends ListFragment implements OnClickListener {
 
 				i.putExtra("PrevLocationExists", false);
 			}
-			startActivityForResult(i, HomeSettingsActivity.LOCATION_RQST_CODE);
+			startActivityForResult(i, HomeSettingsFragment.LOCATION_RQST_CODE);
 			break;
 		}
 	}
@@ -184,7 +184,7 @@ public class WhosHomeActivity extends ListFragment implements OnClickListener {
 		super.onActivityResult(requestCode, resultCode, data);
 		switch (requestCode) 
 		{
-		case HomeSettingsActivity.LOCATION_RQST_CODE:
+		case HomeSettingsFragment.LOCATION_RQST_CODE:
 			if (resultCode == Activity.RESULT_OK)
 			{
 				if (data != null){

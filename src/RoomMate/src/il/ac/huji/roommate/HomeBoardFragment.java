@@ -30,7 +30,7 @@ import android.widget.EditText;
 import android.widget.RelativeLayout;
 
 @SuppressLint("NewApi")
-public class HomeBoardActivity extends ListFragment {
+public class HomeBoardFragment extends ListFragment {
 
 
 	HomeBoardAdapter adapter;
@@ -104,7 +104,7 @@ public class HomeBoardActivity extends ListFragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 	{
 		super.onCreateView(inflater, container, savedInstanceState);
-		View rootView = inflater.inflate(R.layout.activity_home_board, container, false);
+		View rootView = inflater.inflate(R.layout.home_board_fragment, container, false);
 
 		newNoteEdit = (EditText)rootView.findViewById(R.id.new_note);
 		

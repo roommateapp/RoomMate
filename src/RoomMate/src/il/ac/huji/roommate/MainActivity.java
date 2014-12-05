@@ -622,32 +622,32 @@ AddRoommatesSugestListener, AddRoommatesListener
 
 			}
 			locationTracker.resume(getApplicationContext());
-			fragment = new HomeBoardActivity();
+			fragment = new HomeBoardFragment();
 			break;
 		case 1:
-			fragment = new GroceryListsActivity();
+			fragment = new GroceryListsFragment();
 			break;
 		//case 2:
 			//fragment = new CleaningTasksActivity();
 			//break;
 		case 2:
-			fragment = new BillsAcitivity();
+			fragment = new BillsFragment();
 			Bundle bundleBill = new Bundle();
 			bundleBill.putString("houseId", homeIdParse);
 			fragment.setArguments(bundleBill);
 			break;
 		case 3:
-			fragment = new BalanceActivity();
+			fragment = new BalanceFragment();
 			Bundle bundleBalance = new Bundle();
 			bundleBalance.putString("houseId", parseHomeObject.getObjectId());
 			bundleBalance.putString("userName", userName);
 			fragment.setArguments(bundleBalance);
 			break;	
 		case 4:
-			fragment = new WhosHomeActivity();
+			fragment = new WhosHomeFragment();
 			break;
 		case 5:
-			fragment = new HomeSettingsActivity();
+			fragment = new HomeSettingsFragment();
 			break;
 		case 6:
 			//Sign out

@@ -13,12 +13,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 @SuppressLint("NewApi")
-public class CleaningTasksActivity extends ListFragment {
+public class CleaningTasksFragment extends ListFragment {
 
 	@Override 
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 	{
-		View rootView = inflater.inflate(R.layout.activity_cleaning_tasks, container, false);
+		View rootView = inflater.inflate(R.layout.cleaning_tasks_fragment, container, false);
 		CleaningAdapter adapter = new CleaningAdapter(getActivity().getBaseContext(), generateData());
 		setListAdapter(adapter);
 

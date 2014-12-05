@@ -49,7 +49,7 @@ import android.widget.Toast;
 
 
 @SuppressLint("NewApi")
-public class HomeSettingsActivity extends Fragment implements OnClickListener {
+public class HomeSettingsFragment extends Fragment implements OnClickListener {
 
 	private MainActivity mainActivity;
 	private Bitmap bitmap;
@@ -67,7 +67,7 @@ public class HomeSettingsActivity extends Fragment implements OnClickListener {
 	}
 	@Override public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 	{
-		View rootView = inflater .inflate(R.layout.activity_home_settings, container, false); 
+		View rootView = inflater .inflate(R.layout.home_settings_fragment, container, false); 
 
 		TextView inviteBtn = (TextView)rootView.findViewById(R.id.invite_roommates);
 		//		TextView cleaningTxt = (TextView)rootView.findViewById(R.id.cleaning_interval_txt);

@@ -72,7 +72,7 @@
             android:label="Bills" >
         </activity>
         <activity
-            android:name="il.ac.huji.roommate.GroceryListsActivity"
+            android:name="il.ac.huji.roommate.GroceryListsFragment"
             android:label="single_grocery_label" >
         </activity>
         <activity

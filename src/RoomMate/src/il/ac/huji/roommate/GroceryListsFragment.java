@@ -26,7 +26,7 @@ import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
-public class GroceryListsActivity extends ListFragment {
+public class GroceryListsFragment extends ListFragment {
 
 	EditText newList;
 	GroceryListsAdapter adapter;
@@ -65,7 +65,7 @@ public class GroceryListsActivity extends ListFragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 	{
 		super.onCreateView(inflater, container, savedInstanceState);
-		View rootView = inflater.inflate(R.layout.activity_grocery_lists, container, false);
+		View rootView = inflater.inflate(R.layout.grocery_lists_fragment, container, false);
 		rootView.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
 
 		newList = (EditText)rootView.findViewById(R.id.new_list);

@@ -30,7 +30,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 @SuppressLint("NewApi")
-public class BillsAcitivity extends ListFragment {
+public class BillsFragment extends ListFragment {
 
 	private BillsAdapter adapter;
 	private EditText newBillEdit;
@@ -87,7 +87,7 @@ public class BillsAcitivity extends ListFragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 	{
 		super.onCreateView(inflater, container, savedInstanceState);
-		rootView = inflater.inflate(R.layout.activity_bills, container, false);
+		rootView = inflater.inflate(R.layout.bills_fragment, container, false);
 
 		//		ParseQuery<ParseObject> query = ParseQuery.getQuery("SingleBill");
 		//		query.whereEqualTo("houseId", house.getObjectId());
