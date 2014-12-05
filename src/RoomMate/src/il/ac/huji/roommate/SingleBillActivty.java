@@ -399,7 +399,7 @@ public class SingleBillActivty extends Activity implements OnClickListener{
 											AlarmManager billAlarmManager = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
 											billAlarmManager.setRepeating( AlarmManager.RTC_WAKEUP,
 													calNotification.getTimeInMillis(), 
-													86400000, //24 hours
+													172800000, //48 hours
 													pendingIntent);
 											
 

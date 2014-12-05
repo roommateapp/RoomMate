@@ -12,15 +12,6 @@ import java.util.List;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.common.api.GoogleApiClient.ConnectionCallbacks;
-import com.google.android.gms.common.api.GoogleApiClient.OnConnectionFailedListener;
-import com.google.android.gms.internal.hp;
-import com.google.android.gms.plus.Plus;
-import com.google.android.gms.plus.model.people.Person;
-import com.google.android.gms.plus.model.people.Person.Image;
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlarmManager;
@@ -34,36 +25,39 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
-import android.graphics.Bitmap;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
-import android.util.JsonReader;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
-import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.GoogleApiClient.ConnectionCallbacks;
+import com.google.android.gms.common.api.GoogleApiClient.OnConnectionFailedListener;
+import com.google.android.gms.plus.Plus;
+import com.google.android.gms.plus.model.people.Person;
+import com.google.android.gms.plus.model.people.Person.Image;
 import com.parse.FindCallback;
 import com.parse.GetCallback;
+import com.parse.ParseException;
 import com.parse.ParseGeoPoint;
 import com.parse.ParseInstallation;
 import com.parse.ParseObject;
 import com.parse.ParsePush;
 import com.parse.ParseQuery;
-import com.parse.ParseException;
 import com.parse.SaveCallback;
 
 
@@ -132,6 +126,9 @@ AddRoommatesSugestListener, AddRoommatesListener
 
 	private String currentEntryCode;
 	private String newUuid;
+	protected ParseObject newNoteObj;
+	private ParseObject newListObj;
+	private ParseObject newListObjMarket;
 
 	@SuppressLint("NewApi")
 	@Override
@@ -433,6 +430,9 @@ AddRoommatesSugestListener, AddRoommatesListener
 					{
 						if ( e == null )
 						{
+							// add data to house
+							addDataToHouse();
+
 							onHouseFound();
 
 							//**************************** new *******************
@@ -627,29 +627,29 @@ AddRoommatesSugestListener, AddRoommatesListener
 		case 1:
 			fragment = new GroceryListsActivity();
 			break;
+		//case 2:
+			//fragment = new CleaningTasksActivity();
+			//break;
 		case 2:
-			fragment = new CleaningTasksActivity();
-			break;
-		case 3:
 			fragment = new BillsAcitivity();
 			Bundle bundleBill = new Bundle();
 			bundleBill.putString("houseId", homeIdParse);
 			fragment.setArguments(bundleBill);
 			break;
-		case 4:
+		case 3:
 			fragment = new BalanceActivity();
 			Bundle bundleBalance = new Bundle();
 			bundleBalance.putString("houseId", parseHomeObject.getObjectId());
 			bundleBalance.putString("userName", userName);
 			fragment.setArguments(bundleBalance);
 			break;	
-		case 5:
+		case 4:
 			fragment = new WhosHomeActivity();
 			break;
-		case 6:
+		case 5:
 			fragment = new HomeSettingsActivity();
 			break;
-		case 7:
+		case 6:
 			//Sign out
 			signOut();
 
@@ -840,6 +840,108 @@ AddRoommatesSugestListener, AddRoommatesListener
 		}
 
 		updateDisplay(0);
+	}
+
+	private void addDataToHouse() {
+
+		newNoteObj = new ParseObject("Note");
+		newNoteObj.put("content", "Welcome! Here you can leave notes to your rommmates.");
+		newNoteObj.put("writer", "RM");
+
+		newNoteObj.put("isNotification", false);
+		newNoteObj.saveInBackground(new SaveCallback() {
+			@Override
+			public void done(ParseException e) {
+				parseHomeObject.add("notes", newNoteObj.getObjectId());
+				parseHomeObject.saveInBackground();
+			}
+		});
+
+		newListObj = new ParseObject("SingleGroceryList");
+		newListObj.put("name", "Supermarket");
+		newListObj.put("groceries", new ArrayList<ParseObject>());
+		newListObj.saveInBackground(new SaveCallback() {
+			@Override
+			public void done(ParseException e) {
+				parseHomeObject.add("groceryLists", newListObj);
+				parseHomeObject.saveInBackground(new SaveCallback() {
+					private ParseObject newGroceryObj;
+
+					@Override
+					public void done(ParseException e) {
+						newGroceryObj = new ParseObject("Grocery");
+						newGroceryObj.put("name", "milk");
+						newGroceryObj.put("checked", false);
+						newGroceryObj.saveInBackground(new SaveCallback() {			
+							@Override
+							public void done(ParseException e) {
+								newListObj.add("groceries", newGroceryObj);
+								newListObj.saveInBackground(new SaveCallback() {
+
+									@Override
+									public void done(ParseException e) {
+										newGroceryObj = new ParseObject("Grocery");
+										newGroceryObj.put("name", "bread");
+										newGroceryObj.put("checked", false);
+										newGroceryObj.saveInBackground(new SaveCallback() {			
+											@Override
+											public void done(ParseException e) {
+												newListObj.add("groceries", newGroceryObj);
+												newListObj.saveInBackground();
+											}
+										});
+									}
+								});
+							}
+						});
+					}
+				});
+			}
+		});
+		
+		
+		newListObjMarket = new ParseObject("SingleGroceryList");
+		newListObjMarket.put("name", "Market");
+		newListObjMarket.put("groceries", new ArrayList<ParseObject>());
+		newListObjMarket.saveInBackground(new SaveCallback() {
+			@Override
+			public void done(ParseException e) {
+				parseHomeObject.add("groceryLists", newListObjMarket);
+				parseHomeObject.saveInBackground(new SaveCallback() {
+					private ParseObject newGroceryObj;
+
+					@Override
+					public void done(ParseException e) {
+						newGroceryObj = new ParseObject("Grocery");
+						newGroceryObj.put("name", "tomatoes");
+						newGroceryObj.put("checked", false);
+						newGroceryObj.saveInBackground(new SaveCallback() {			
+							@Override
+							public void done(ParseException e) {
+								newListObjMarket.add("groceries", newGroceryObj);
+								newListObjMarket.saveInBackground(new SaveCallback() {
+
+									@Override
+									public void done(ParseException e) {
+										newGroceryObj = new ParseObject("Grocery");
+										newGroceryObj.put("name", "cucumbers");
+										newGroceryObj.put("checked", false);
+										newGroceryObj.saveInBackground(new SaveCallback() {			
+											@Override
+											public void done(ParseException e) {
+												newListObj.add("groceries", newGroceryObj);
+												newListObj.saveInBackground();
+											}
+										});
+									}
+								});
+							}
+						});
+					}
+				});
+			}
+		});
+		
 	}
 
 

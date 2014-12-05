@@ -34,7 +34,7 @@
     <string-array name="titles">
         <item>Home board</item>
         <item>Grocery lists</item>
-        <item>Cleaning tasks</item>
+        <!-- <item>Cleaning tasks</item> -->
         <item>Bills</item>
         <item>Balance</item>
         <item>Who is home now?</item>
@@ -45,11 +45,12 @@
     <array name="icons">
         <item>@android:drawable/ic_menu_my_calendar</item>
         <item>@android:drawable/ic_menu_edit</item>
-        <item>@android:drawable/ic_menu_delete</item>
+        <!-- <item>@android:drawable/ic_menu_delete</item>  -->
         <item>@android:drawable/ic_menu_info_details</item>
         <item>@android:drawable/ic_menu_sort_by_size</item>
         <item>@android:drawable/ic_menu_myplaces</item>
         <item>@android:drawable/ic_menu_manage</item>
+        <item>@android:drawable/ic_menu_close_clear_cancel</item>
     </array>
 
     <drawable name="pressed">#B2D1C3</drawable>
