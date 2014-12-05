@@ -823,13 +823,14 @@ AddRoommatesSugestListener, AddRoommatesListener
 	}
 
 	private void onHouseFound (){
-		// Get home data
+		
 
 		ParseInstallation pi = ParseInstallation.getCurrentInstallation();
 		pi.put(PERSON_FIELD_HOUSE, homeIdParse);
 		pi.put("userId", parsePersonObject.getObjectId());
 		pi.saveInBackground();
-
+		
+		// Get home data
 		homePeopleList = parseHomeObject.getList(HOUSE_FIELD_PERSONS);
 
 		homePeopleMap = new HashMap<String, PersonData>();

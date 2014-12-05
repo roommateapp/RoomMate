@@ -24,7 +24,6 @@ public class BillNotificationService  extends Service
 	@Override
 	public void onCreate() 
 	{
-		// TODO Auto-generated method stub  
 		super.onCreate();
 	}
 
@@ -38,7 +37,7 @@ public class BillNotificationService  extends Service
 		String houseId = intent.getStringExtra("houseId");
 		String userId = intent.getStringExtra("userId");
 		
-		String notificationMessage = billName + " bill's deadline is " + notificationDays + " away!";
+		String notificationMessage = billName + " bill's deadline is " + notificationDays + " days away!";
 
 		Log.i("BILL" ," in service!");
 		mManager = (NotificationManager)getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
@@ -59,7 +58,6 @@ public class BillNotificationService  extends Service
 		ParseQuery<ParseInstallation> pushQuery = ParseInstallation.getQuery();
 		pushQuery.whereEqualTo(MainActivity.PERSON_FIELD_HOUSE, houseId );
 		pushQuery.whereNotEqualTo("userId", userId);
-		//TODO:
 
 		// Send push notification to query
 		ParsePush push = new ParsePush();
@@ -75,13 +73,11 @@ public class BillNotificationService  extends Service
 	@Override
 	public void onDestroy() 
 	{
-		// TODO Auto-generated method stub
 		super.onDestroy();
 	}
 
 	@Override
 	public IBinder onBind(Intent arg0) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

@@ -113,26 +113,46 @@ public class WhosHomeActivity extends ListFragment implements OnClickListener {
 			pushQuery.whereEqualTo(MainActivity.PERSON_FIELD_AT_HOME, true);
 			pushQuery.whereEqualTo(MainActivity.PERSON_FIELD_HOUSE, mainActivity.homeIdParse);
 			pushQuery.whereNotEqualTo("userId", mainActivity.parsePersonObject.getObjectId());
-
-			// Send push notification to query
-			ParsePush push = new ParsePush();
-			push.setChannel("");
-			push.setQuery(pushQuery);
-			push.setMessage(mainActivity.userName + " says: " + messageText);
-			push.sendInBackground( new SendCallback() {
-
-				@Override
-				public void done(ParseException e) {
-					if (e == null){
-						Toast.makeText(mainActivity, "The message was sent!", Toast.LENGTH_LONG).show();
-					}
-					else
-					{
-						e.printStackTrace();
-						Toast.makeText(mainActivity, "A problem occured. Please try again later", Toast.LENGTH_LONG).show();
-					}
+			
+			boolean found = false;
+			Collection<PersonData>people = mainActivity.getHomePeopleMap().values();
+			for (PersonData person : people){
+				if ( person.atHome() && 
+						person.getPersonParseObject().getObjectId() != 
+						mainActivity.parsePersonObject.getObjectId() ){
+					found = true;
+					break;
 				}
-			});
+			}
+			
+			if (!found){
+				Toast.makeText(mainActivity, "Non of your roommates are at home right now", Toast.LENGTH_LONG).show();
+			}
+			else
+			{
+				// Send push notification to query
+				ParsePush push = new ParsePush();
+				push.setChannel("");
+				push.setQuery(pushQuery);
+				push.setMessage(mainActivity.userName + " says: " + messageText);
+				
+				push.sendInBackground( new SendCallback() {
+
+					@Override
+					public void done(ParseException e) {
+						if (e == null){
+							Toast.makeText(mainActivity, "The message was sent!", Toast.LENGTH_LONG).show();
+						}
+						else
+						{
+							e.printStackTrace();
+							Toast.makeText(mainActivity, "A problem occured. Please try again later", Toast.LENGTH_LONG).show();
+						}
+					}
+				});
+			}
+
+			
 			break;
 		case R.id.whos_home_change_location:
 			Intent i = new Intent(getActivity().getApplicationContext(), ChooseHomeLocationActivity.class);
