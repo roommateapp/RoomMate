@@ -4,6 +4,9 @@ import android.graphics.Bitmap;
 import android.media.Image;
 import android.util.Log;
 
+/**
+ * Class for representing if a roommate is home right now.
+ **/
 public class WhosHomeModel {
 
 	private String name;
@@ -11,10 +14,9 @@ public class WhosHomeModel {
 	private boolean atHome;
 
 	public WhosHomeModel(String pName, boolean pAtHome, Bitmap pImage){
-		Log.d("tt", "2");
-		name = pName;
-		img = pImage;
-		atHome = pAtHome;
+		setName(name);
+		setImage(img);
+		setAtHome(pAtHome);
 	}
 
 	public String getName() {
@@ -29,7 +31,11 @@ public class WhosHomeModel {
 	public void setImage(Bitmap pImage) {
 		img = pImage;
 	}
-
+	
+	public void setAtHome(boolean isAtHome){
+		atHome = isAtHome;
+	}
+	
 	public boolean isAtHome()
 	{
 		return atHome;

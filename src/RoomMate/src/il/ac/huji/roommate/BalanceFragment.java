@@ -38,15 +38,23 @@ public class BalanceFragment extends ListFragment {
 	protected TextView myCreditTxt;
 	private TextView balanceStartTxt;
 	private MainActivity mainActivity;
+	
+	private final String USER_NAME = "userName";
+	private final String SPENDINGS = "spendings";
+	private final String START_DATE = "startDate";
+	private final String DATE_FORMAT = "dd/MM/yy";
+	private final String BALANCE_INTERVAL = "balanceInterval";
+	private final String PERSONS = "persons";
+	private final double INIT_MONEY = 0.0;
+	private final String FONT_REG = "SinkinSans-400Regular.otf";
+	private final String FONT_BOLD = "SinkinSans-600SemiBold.otf";
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
-		//getActivity();
 		super.onCreate(savedInstanceState);
 		Bundle args = getArguments();
-		if (args.getString("userName")!=null)
-			userName = args.getString("userName");
-		Log.i("BALANCE", "oncreate username " + userName);
+		if (args.getString(USER_NAME)!=null)
+			userName = args.getString(USER_NAME);
 	}
 
 	@Override
@@ -63,21 +71,14 @@ public class BalanceFragment extends ListFragment {
 
 		myDebtTxt = (TextView)rootView.findViewById(R.id.my_bebt);
 		myCreditTxt = (TextView)rootView.findViewById(R.id.my_credit);
-
 		balanceStartTxt = (TextView)rootView.findViewById(R.id.balance_start);
 
-		// load existing data to models array
-		// get all people's googleId from House Parse-object
-		//		ParseQuery<ParseObject> queryHouse = ParseQuery.getQuery("House");
-		//		queryHouse.getInBackground(houseId, new GetCallback<ParseObject>() {
-		//			@Override
-		//			public void done(ParseObject house, ParseException e) {
 		ParseObject house = mainActivity.getHomeObject();
-		Date startDate = house.getDate("startDate");
-		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yy");
+		Date startDate = house.getDate(START_DATE);
+		SimpleDateFormat formatter = new SimpleDateFormat(DATE_FORMAT);
 		String startDateStr = formatter.format(startDate);
 
-		int balIn = house.getInt("balanceInterval");
+		int balIn = house.getInt(BALANCE_INTERVAL);
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(startDate);
 		cal.add(Calendar.DAY_OF_YEAR, balIn);
@@ -85,89 +86,63 @@ public class BalanceFragment extends ListFragment {
 		String endDateStr = formatter.format(endDate);
 
 		balanceStartTxt.setText(startDateStr + " - " + endDateStr);
-		Log.i("BALANCE", "HOUSE FOUND");
-		allRoommates = house.getList("persons");
-		Log.i("BALANCE", "ALLrOOMMATES LENGTH: " + allRoommates.size());
+		allRoommates = house.getList(PERSONS);
 
-		houseSpendings = house.getDouble("spendings");
+		houseSpendings = house.getDouble(SPENDINGS);
 		eachRoommateSahre = houseSpendings/allRoommates.size();
 
 		// for each id get the debt and credit from Person Parse-object and save it to models
 		for (ParseObject person : allRoommates){
-			//					Log.i("BALANCE", "roommate id: " + s);
-			//					ParseQuery<ParseObject> queryPerson = ParseQuery.getQuery("Person");
-			//					queryPerson.whereEqualTo("personGoogleId", s);
-			//					queryPerson.whereEqualTo("house", houseId);
-			//					ParseObject person;
-			//					try {
 			try {
 				person = person.fetch();
 			} catch (ParseException e1) {
 				e1.printStackTrace();
 			}				
-			Log.i("BALANCE", "PERSON FOUND : " + person.getString("userName"));
 			Double roommateCredit = person.getDouble("credit");
-			Log.i("BALANCE", "CREDIT : " + person.getDouble("credit"));
-			Log.i("BALANCE", "EACH SHARE " + eachRoommateSahre);
-			Log.i("BALANCE", "person.(username) : " + person.getString("userName"));
-			Log.i("BALANCE", "username : " + userName);
-			if (person.getString("userName").equals(userName)){
-				Log.i("BALANCE", "UPDATING MY CREDIT");
+			if (person.getString(USER_NAME).equals(userName)){
 				if (roommateCredit < eachRoommateSahre){
 					myDebt = eachRoommateSahre-roommateCredit;
-					myCredit = 0.0;	
+					myCredit = INIT_MONEY;	
 				}
 				else if (roommateCredit > eachRoommateSahre){
-					myDebt = 0.0;
+					myDebt = INIT_MONEY;
 					myCredit = roommateCredit-eachRoommateSahre;
 				}
 				else{
-					myDebt = 0.0;
-					myCredit = 0.0;
+					myDebt = INIT_MONEY;
+					myCredit = INIT_MONEY;
 				}
 				myDebtTxt.setText(String.valueOf(myDebt));
 				myCreditTxt.setText(String.valueOf(myCredit));
 			} else {
 				if (roommateCredit < eachRoommateSahre)
-					models.add(new BalanceModel(person.getString("userName"), eachRoommateSahre-roommateCredit, 0));
+					models.add(new BalanceModel(person.getString(USER_NAME), eachRoommateSahre-roommateCredit, 0));
 				else if (roommateCredit > eachRoommateSahre)
-					models.add(new BalanceModel(person.getString("userName"), 0, roommateCredit-eachRoommateSahre));
+					models.add(new BalanceModel(person.getString(USER_NAME), 0, roommateCredit-eachRoommateSahre));
 				else
-					models.add(new BalanceModel(person.getString("userName"), 0, 0));
+					models.add(new BalanceModel(person.getString(USER_NAME), 0, 0));
 			}
 		}
-		Log.i("BALANCE", "models size: " + String.valueOf(models.size()));
 		adapter = new BalanceAdapter(getActivity().getBaseContext(), models, userName);
 		setListAdapter(adapter);
-		//	}
-		//		});
 
+		// get all views of fragment
 		TextView balanceTxt1 = (TextView)rootView.findViewById(R.id.balance_period_txt);
 		TextView myNameTxt = (TextView)rootView.findViewById(R.id.my_name);
 		TextView infoText = (TextView)rootView.findViewById(R.id.info_text);
-
-		//		ParseQuery<ParseObject> queryHouse = ParseQuery.getQuery("House");
-		//		queryHouse.getInBackground(houseId, new GetCallback<ParseObject>() {
-		//			
-		//		}
-
-
-		// BALANCE START - get start date from House ParseObject and set it to the "balanceStartTxt" view
-
 		TextView billTitleTxt = (TextView)rootView.findViewById(R.id.bill_name_title);
 		TextView billAmmountTitleTxt = (TextView)rootView.findViewById(R.id.bill_ammount_title);
 		TextView billDateTitleTxt = (TextView)rootView.findViewById(R.id.bill_due_date_title);
-
-		Typeface font = Typeface.createFromAsset(getActivity().getAssets(), "SinkinSans-400Regular.otf");
-		Typeface fontBold = Typeface.createFromAsset(getActivity().getAssets(), "SinkinSans-600SemiBold.otf");
+		
+		// set font
+		Typeface font = Typeface.createFromAsset(getActivity().getAssets(), FONT_REG);
+		Typeface fontBold = Typeface.createFromAsset(getActivity().getAssets(), FONT_BOLD);
 		balanceTxt1.setTypeface(font);
 		infoText.setTypeface(font);
 		balanceStartTxt.setTypeface(font);
-
 		myNameTxt.setTypeface(font);
 		myDebtTxt.setTypeface(font);
 		myCreditTxt.setTypeface(font);
-
 		billTitleTxt.setTypeface(fontBold);
 		billDateTitleTxt.setTypeface(fontBold);
 		billAmmountTitleTxt.setTypeface(fontBold);
