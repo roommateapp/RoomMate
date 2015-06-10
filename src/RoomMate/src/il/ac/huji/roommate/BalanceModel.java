@@ -1,5 +1,8 @@
 package il.ac.huji.roommate;
 
+/*
+* Class representing BalanceModel object, used by the BalanaceAdapter
+*/
 public class BalanceModel {
 
 	private String name;
@@ -7,9 +10,9 @@ public class BalanceModel {
 	private double credit;
 	
 	public BalanceModel(String name, double debt, double credit){
-		this.name = name;
-		this.debt = debt;
-		this.credit = credit;
+		setName(name);
+		setDebt(debt);
+		setCredit(credit);
 	}
 	
 	public String getName() {
