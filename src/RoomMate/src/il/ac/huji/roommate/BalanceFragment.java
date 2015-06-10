@@ -39,16 +39,15 @@ public class BalanceFragment extends ListFragment {
 	private TextView balanceStartTxt;
 	private MainActivity mainActivity;
 	
-	final String USER_NAME = "userName";
-	final String SPENDINGS = "spendings";
-	final String START_DATE = "startDate";
-	final String DATE_FORMAT = "dd/MM/yy";
-	final String BALANCE_INTERVAL = "balanceInterval";
-	final String PERSONS = "persons";
-	final double INIT_MONEY = 0.0;
-	final String FONT_REG = "SinkinSans-400Regular.otf";
-	final String FONT_BOLD = "SinkinSans-600SemiBold.otf";
-	
+	private final String USER_NAME = "userName";
+	private final String SPENDINGS = "spendings";
+	private final String START_DATE = "startDate";
+	private final String DATE_FORMAT = "dd/MM/yy";
+	private final String BALANCE_INTERVAL = "balanceInterval";
+	private final String PERSONS = "persons";
+	private final double INIT_MONEY = 0.0;
+	private final String FONT_REG = "SinkinSans-400Regular.otf";
+	private final String FONT_BOLD = "SinkinSans-600SemiBold.otf";
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
